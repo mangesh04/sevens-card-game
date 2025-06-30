@@ -1,0 +1,28 @@
+.card {
+    text-align: center;
+    height: 7rem;
+    width: 4rem;
+    border: solid 1px black;
+    font-size: larger;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+@keyframes float {
+    0% {
+        box-shadow: 9px 9px 0px 0px rgba(0, 0, 0, 0.67);
+    }
+
+    100% {
+
+        box-shadow: 9px 9px 0px 0px rgba(0, 0, 0, 0.67);
+    }
+}
+
+.shadow {
+    transform: translate(-50, -50);
+    transition: transform 3s ease;
+    box-shadow: 9px 9px 0px 0px rgba(0, 0, 0, 0.67);
+    border-radius: 3px;
+}

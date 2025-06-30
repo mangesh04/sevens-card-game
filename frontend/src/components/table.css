@@ -1,0 +1,26 @@
+.table {
+    margin: 10px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+
+.card_column {
+    position: relative;
+}
+
+.card_slot {
+    position: relative;
+    height: 7rem;
+    width: 4rem;
+}
+
+.top_slot {
+    right: 5px;
+    top: 50px;
+}
+
+.bottom_slot {
+    right: 5px;
+    bottom: 50px;
+}
