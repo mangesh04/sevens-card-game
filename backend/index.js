@@ -93,7 +93,7 @@ io.on("connection", (socket) => {
         });
     });
 
-    socket.on("start-again", () => {
+    socket.on("start-again", (roomId) => {
         // roomId
         // const room = rooms[roomId];
         // if (!room || room.players.length < 2) return;
@@ -110,10 +110,10 @@ io.on("connection", (socket) => {
         // });
         console.log("start-again", "new-table")
 
-        io.emit("new-table");
+        io.to(roomId).emit("new-table");
     })
 
-    socket.on("player-move", ({ value, suiteIndex }) => {
+    socket.on("player-move", ({ value, suiteIndex ,roomId}) => {
 
         let i = suiteIndex;
 
@@ -130,19 +130,19 @@ io.on("connection", (socket) => {
 
         // table[i][j] = { value, suiteIndex };
 
-        io.emit("change-table", { card: { value, suiteIndex }, index: [i, j] });
-        io.emit("change-turn");
+        io.to(roomId).emit("change-table", { card: { value, suiteIndex }, index: [i, j] });
+        io.to(roomId).emit("change-turn");
 
     });
 
-    socket.on("winner", ({ winner }) => {
+    socket.on("winner", ({ winner,roomId }) => {
         console.log("winner is ", winner)
-        io.emit("winner", { winner });
+        io.to(roomId).emit("winner", { winner });
     })
 
-    socket.on("pass", () => {
+    socket.on("pass", (roomId) => {
 
-        io.emit("change-turn");
+        io.to(roomId).emit("change-turn");
     });
 
     socket.on("create-lobby", (playerName, callback) => {
