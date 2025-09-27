@@ -3,7 +3,7 @@ import Card from "./card";
 import "./table.css";
 import { socket } from "../socket";
 import playedSound from '../assets/played.wav';
-import { cookies } from "next/headers";
+
 
 export default function Table({ table, setTable }) {
 
