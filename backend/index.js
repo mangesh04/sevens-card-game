@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -183,7 +184,7 @@ function generateRoomId() {
 // server.listen(3001, '192.168.230.73', () => {
 //     console.log("Server running on http://localhost:3001");
 // });
-
-server.listen(3001, () => {
+const port = process.env.PORT || 3000;
+server.listen(, () => {
     console.log("Server running on http://localhost:3001");
 });
