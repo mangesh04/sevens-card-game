@@ -1,3 +1,4 @@
 import { io } from "socket.io-client";
 
-export const socket = io("https://sevens-card-game-production.up.railway.app");
+console.log(import.meta.env.VITE_serverURL);
+export const socket = io(import.meta.env.VITE_serverURL);

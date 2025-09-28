@@ -4,7 +4,6 @@ import "./table.css";
 import { socket } from "../socket";
 import playedSound from '../assets/played.wav';
 
-
 export default function Table({ table, setTable }) {
 
 

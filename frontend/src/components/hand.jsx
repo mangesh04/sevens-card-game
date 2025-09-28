@@ -21,7 +21,7 @@ export default function Hand({ table, roomId, players, turn, selfId }) {
         socket.on("get-hand", handHandler);
 
         if (players[turn].id === selfId && checkAllCards(hand)) {
-            socket.emit("pass")
+            socket.emit("pass",roomId)
             console.log("pass message sent")
         }
 
@@ -47,12 +47,12 @@ export default function Hand({ table, roomId, players, turn, selfId }) {
         console.log(hand.length);
 
         if (hand.length === 1 && players[turn].id === selfId && isFit(hand[0])) {
-            socket.emit("winner", { winner: players[turn].name });
+            socket.emit("winner", { winner: players[turn].name ,roomId});
             console.log("winner message sent");
         }
 
         if (players[turn].id === selfId && checkAllCards(hand)) {
-            socket.emit("pass")
+            socket.emit("pass",roomId)
             console.log("pass message sent")
         }
     }, [turn]);
@@ -100,7 +100,7 @@ export default function Hand({ table, roomId, players, turn, selfId }) {
     function playMove(value, suiteIndex) {
 
         if (players[turn].id === selfId && isFit({ value, suiteIndex })) {
-            socket.emit("player-move", { value, suiteIndex });
+            socket.emit("player-move", { value, suiteIndex,roomId });
 
 
             setHand((prevHand) => {

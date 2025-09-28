@@ -45,7 +45,7 @@ export default function GamePage({ players, roomId, selfId }) {
   }, [])
 
   function start_again() {
-    socket.emit("start-again");
+    socket.emit("start-again",roomId);
   }
   if (winner) {
 

@@ -114,7 +114,7 @@ io.on("connection", (socket) => {
         io.to(roomId).emit("new-table");
     })
 
-    socket.on("player-move", ({ value, suiteIndex ,roomId}) => {
+    socket.on("player-move", ({ value, suiteIndex, roomId }) => {
 
         let i = suiteIndex;
 
@@ -136,7 +136,7 @@ io.on("connection", (socket) => {
 
     });
 
-    socket.on("winner", ({ winner,roomId }) => {
+    socket.on("winner", ({ winner, roomId }) => {
         console.log("winner is ", winner)
         io.to(roomId).emit("winner", { winner });
     })
@@ -179,12 +179,10 @@ function generateRoomId() {
     return Math.random().toString(36).substr(2, 6).toUpperCase();
 }
 
-
-
 // server.listen(3001, '192.168.230.73', () => {
 //     console.log("Server running on http://localhost:3001");
 // });
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 server.listen(port, () => {
-    console.log("Server running on http://localhost:3001");
+    console.log("Server running on port " + port);
 });
